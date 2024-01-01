@@ -5,7 +5,7 @@
     const anchor = getSelection().anchorNode;
     if (!anchor || anchor === body) return;
     anchor.textContent = '[BREACHED] ' + anchor.textContent + ' [BREACHED]';
-    anchor.style.fontColor = 'red';
+    anchor.parentElement.style.color = 'red';
   }, 100);
 </script>
 <body id="body" onload="vendor.innerHTML = `<h4>browser: <u>${getBrowser()}</u></h4>`">
