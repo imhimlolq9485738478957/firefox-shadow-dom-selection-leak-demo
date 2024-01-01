@@ -8,8 +8,8 @@
     anchor.style.fontColor = 'red';
   }, 100);
 </script>
-<body id="body" onload="browser.innerHTML = `<h3>browser: <u>${getBrowser()}</u></h3>`">
-  <div id="browser"></div>
+<body id="body" onload="vendor.innerHTML = `<h3>browser: <u>${getBrowser()}</u></h3>`">
+  <div id="vendor"></div>
   <div id="outer"></div>
   <script> outer.attachShadow({mode:'closed'}).appendChild(document.createElement('h1')).textContent = TEXT; </script>
   <script>
