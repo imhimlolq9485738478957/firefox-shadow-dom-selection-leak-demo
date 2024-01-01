@@ -8,10 +8,10 @@
     anchor.style.fontColor = 'red';
   }, 100);
 </script>
-<body id="body" onload="vendor.innerHTML = `<h3>browser: <u>${getBrowser()}</u></h3>`">
+<body id="body" onload="vendor.innerHTML = `<h4>browser: <u>${getBrowser()}</u></h4>`">
   <div id="vendor"></div>
   <div id="outer"></div>
-  <script> outer.attachShadow({mode:'closed'}).appendChild(document.createElement('h1')).textContent = TEXT; </script>
+  <script> outer.attachShadow({mode:'closed'}).appendChild(document.createElement('h3')).textContent = TEXT; </script>
   <script>
     function getBrowser() {
       if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
