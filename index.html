@@ -3,14 +3,15 @@
   setTimeout(() => {
     find(TEXT);
     const anchor = getSelection().anchorNode;
-    if (anchor === body) return;
-    anchor.textContent += ' [BREACHED]';
+    if (!anchor || anchor === body) return;
+    anchor.textContent = '[BREACHED] ' + anchor.textContent + ' [BREACHED]';
+    anchor.style.fontColor = 'red';
   }, 100);
 </script>
-<body id="body" onload="browser.innerHTML = `<h1>browser: <u>${getBrowser()}</u></h1>`">
+<body id="body" onload="browser.innerHTML = `<h3>browser: <u>${getBrowser()}</u></h3>`">
   <div id="browser"></div>
   <div id="outer"></div>
-  <script> outer.attachShadow({mode:'closed'}).append(TEXT); </script>
+  <script> outer.attachShadow({mode:'closed'}).appendChild(document.createElement('h1')).textContent = TEXT; </script>
   <script>
     function getBrowser() {
       if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
