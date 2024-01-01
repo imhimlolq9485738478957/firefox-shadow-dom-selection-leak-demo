@@ -1,0 +1,12 @@
+<script>
+  setTimeout(() => {
+    find('xxx');
+    const anchor = getSelection().anchorNode;
+    if (anchor === body) return;
+    anchor.textContent += ' [BREACHED]';
+  }, 100);
+</script>
+<body id="body">
+  <div id="outer"></div>
+  <script> outer.attachShadow({mode:'closed'}).append('xxx'); </script>
+</body>
