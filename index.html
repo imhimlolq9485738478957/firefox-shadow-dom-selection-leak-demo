@@ -1,12 +1,34 @@
 <script>
+  top.TEXT = 'CLOSED SHADOW ROOT - PROTECTED FROM OUTER TAMPERING';
   setTimeout(() => {
-    find('xxx');
+    find(TEXT);
     const anchor = getSelection().anchorNode;
     if (anchor === body) return;
     anchor.textContent += ' [BREACHED]';
   }, 100);
 </script>
-<body id="body">
+<body id="body" onload="browser.innerHTML = `<h1>browser: <u>${getBrowser()}</u></h1>`">
+  <div id="browser"></div>
   <div id="outer"></div>
-  <script> outer.attachShadow({mode:'closed'}).append('xxx'); </script>
+  <script> outer.attachShadow({mode:'closed'}).append(TEXT); </script>
+  <script>
+    function getBrowser() {
+      if ((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1) {
+        return('Opera');
+      } else if (navigator.userAgent.indexOf("Edg") != -1) {
+        return('Edge');
+      } else if (navigator.userAgent.indexOf("Chrome") != -1) {
+        return('Chrome');
+      } else if (navigator.userAgent.indexOf("Safari") != -1) {
+        return('Safari');
+      } else if (navigator.userAgent.indexOf("Firefox") != -1) {
+        return('Firefox');
+      } else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) //IF IE > 10
+      {
+        return('IE');
+      } else {
+        return('unknown');
+      }
+    }
+  </script>
 </body>
